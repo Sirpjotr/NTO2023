@@ -1,0 +1,48 @@
+@media (max-width: 992px) {
+    .header {
+        padding: 17px 0;
+    }
+    
+    .header-nav {
+        display: none;
+    }
+
+    .header-btn {
+        padding: 12px 20px;
+        margin-right: 7px;
+        font-size: 12px;
+    }
+
+    .burger {
+        display: block;
+        position: relative;
+        width: 36px;
+        height: 36px;
+        border: 1px solid currentColor;
+        border-radius: 3px;
+        color: #293c6d;
+    }
+
+    .burger-line {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 1px;
+        border-radius: inherit;
+        background-color: currentColor;
+    }
+
+    .burger-line:nth-child(1) {
+        top: 10px;
+    }
+
+    .burger-line:nth-child(3) {
+        bottom: 10px;
+    }
+
+    .burger-line:nth-child(2) {
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+}
