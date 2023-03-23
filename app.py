@@ -26,31 +26,10 @@ def home():
     return render_template("index.html")
 
 
-@app.route("/users")
+@app.route("/game")
 def users():
-    users = db.session.execute(db.select(User).order_by(User.username)).scalars()
-    print(users)
-    #return 'OK'
-    #users = db.session.query().all()
-    return render_template("users.html", users=users)
+    return render_template("game.html")
 
-
-@app.route("/create-user", methods=["GET", "POST"])
-def user_create():
-    if request.method == "POST":
-        user = User(
-            username=request.form["username"],
-            email=request.form["email"],
-        )
-        try:
-            db.session.add(user)
-            db.session.commit()
-            return redirect('/')
-        except:
-            return "Аккаунт с такой почтой уже зарегистрирован"
-
-    else:
-        return render_template("create-user.html")
 
 
 if __name__ == '__main__':
