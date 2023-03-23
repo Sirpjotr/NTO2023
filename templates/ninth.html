@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+    <head>
+      <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+      <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+      <title>Анимация</title>
+        <link rel="shortcut icon" href="../static/img/gorcode-logo.svg" type="image/svg">
+    </head>
+
+    <body>
+        <a-scene
+        vr-mode-ui="enabled: false;"
+        renderer="logarithmicDepthBuffer: true;"
+        embedded
+        arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
+        
+        <a-marker preset="hiro">
+            <a-light type="directional" light="castShadow:true;" position="1 30 1" intensity="0.5" shdadow-camera-automatic="#objects"></a-light>
+
+            <a-box 
+            id="box"
+            shadow="cast: true; receive: true"
+            color="red"
+            scale="1 1 1"
+            position="0 2 0"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"></a-box>
+
+            <a-plane
+            scale="5 5 5"
+            color="white"
+            rotation="-90 0 0"
+            shadow="recesive: true"></a-plane>
+        </a-marker>
+        <a-entity camera look-controls wasd-controls></a-entity>
+        </a-scene>
+        <script>
+            priv.bindEvent = function(evt) {
+            var el = document.getElementById('camera').getAttribute('position');
+            var element = document.getElementById('camera');
+            switch(evt.key) {
+                case "z":
+                    el.z -= 0.2;
+                    element.setAttribute('position', el.x+" "+el.y+" "+el.z);
+                    break;
+                case "q":
+                    el.x -= 0.2;
+                    element.setAttribute('position', el.x+" "+el.y+" "+el.z);
+                    break;
+                case "d":
+                    el.x += 0.2;
+                    element.setAttribute('position', el.x+" "+el.y+" "+el.z);
+                    break;
+                case "s":
+                    el.z += 0.2;
+                    element.setAttribute('position', el.x+" "+el.y+" "+el.z);
+                    break;
+                default:
+                    break;
+
+            }
+        };
+        </script>
+    </body>
+</html>

@@ -1,0 +1,83 @@
+<html>
+    <head>
+      <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+      <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+      <title>Кнопочки</title>
+        <link rel="shortcut icon" href="../static/img/gorcode-logo.svg" type="image/svg">
+      <style>
+        .button{
+            background-color: aquamarine;
+            width: 10vh;
+            height: 10vh;
+            position: fixed;
+        }
+        .up{
+            top: 0px;
+            left: 45%;
+        }
+        .down{
+            bottom: 0px;
+            left: 45%;
+        }
+        .left{
+            top: 45%;
+            left: 0px;
+        }
+        .right{
+            top: 45%;
+            right: 0px;
+        }
+      </style>
+    </head>
+    <body>
+      <a-scene
+      vr-mode-ui="enabled: false;"
+    renderer="logarithmicDepthBuffer: true;"
+    embedded
+    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+      >
+        <a-assets>
+            <img id="txi" src="./static/img/texture.png">
+        </a-assets>
+        <a-marker preset="hiro">
+            <a-box id="control" src="#txi"></a-box>
+        </a-marker>
+        <a-entity camera look-controls wasd-controls></a-entity>
+      </a-scene>
+      <div class="up button"></div>
+    <div class="down button"></div>
+    <div class="right button"></div>
+    <div class="left button"></div>
+    </body>
+    <script>
+        var obj = document.getElementById("control")
+        let upb = document.getElementsByClassName("up")[0]
+        let downb = document.getElementsByClassName("down")[0]
+        let rightb = document.getElementsByClassName("right")[0]
+        let leftb = document.getElementsByClassName("left")[0]
+        var dx = 25
+        var pos = document.getElementById('control').getAttribute('rotation');
+        
+       upb.onclick = function() {
+            pos.x -= dx;
+            obj.setAttribute('rotation', pos.x+" "+pos.y+" "+pos.z);      
+        };
+
+        downb.onclick = function() {
+            pos.x += dx;
+            obj.setAttribute('rotation', pos.x+" "+pos.y+" "+pos.z);      
+        };
+
+        rightb.onclick = function() {
+            pos.z -= dx;
+            obj.setAttribute('rotation', pos.x+" "+pos.y+" "+pos.z);      
+        };
+
+        leftb.onclick = function() {
+            pos.z += dx;
+            obj.setAttribute('rotation', pos.x+" "+pos.y+" "+pos.z);      
+        };
+
+
+      </script>
+  </html>

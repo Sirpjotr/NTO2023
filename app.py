@@ -26,10 +26,34 @@ def home():
     return render_template("index.html")
 
 
-@app.route("/game")
-def users():
+@app.route("/dif-game")
+def dg():
     return render_template("game.html")
 
+
+@app.route("/simple-game")
+def sg():
+    return render_template("simple-game.html")
+
+
+@app.route("/position")
+def p():
+    return render_template("position.html")
+
+
+@app.route("/rotation")
+def r():
+    return render_template("twelve.html")
+
+
+@app.route("/shadow")
+def s():
+    return render_template("tenth-task.html")
+
+
+@app.route("/shadow-animation")
+def sa():
+    return render_template("ninth.html")
 
 
 if __name__ == '__main__':

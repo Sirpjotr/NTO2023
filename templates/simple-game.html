@@ -5,7 +5,7 @@
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
 
-  <title>Игра</title>
+  <title>Простая игра</title>
 
   <link rel="shortcut icon" href="../static/img/gorcode-logo.svg" type="image/svg">
 </head>
@@ -16,6 +16,7 @@
         <audio  id="audio2" src ="https://cdn.glitch.global/2cde3668-1228-4af5-9598-55543259538f/Sound_19349.mp3?v=1679552230110" crossorigin="anonymous"></audio>
     </a-assets>
     <a-marker id="hiro" preset="hiro">
+      <a-sound id="sound1" src="#audio1" volume="0.5"></a-sound>
       <a-sound id="sound2" src="#audio2" volume="10"></a-sound>
       <!--<a-entity
       id="cubeContainer"></a-entity>-->
@@ -23,23 +24,7 @@
       id="cubeContainer"
       color="red"
       position="-1 0 -1"
-      scale="0.5 0.5 0.5"
-      opacity="0"
-      ></a-box>
-
-      <a-sphere
-      id="sphereContainer"
-      color="red"
-      position="0 0 0.25"
-      scale="0.25 0.25 0.25"
-      opacity="0"></a-sphere>
-      <a-gltf-model
-        id="galaftContainer"
-        src="https://cdn.glitch.global/89439951-2532-4b46-ae5a-ac14375adfaa/cubeSuper.glb?v=1679559721530"
-        visible="false"
-        scale="0.3 0.3 0.3"
-        rotation="0 90 0"
-      ></a-gltf-model>
+      scale="0.5 0.5 0.5"></a-box>
       <a-plane
       id="plane"
       color="white"
@@ -47,31 +32,16 @@
       rotation="-90 0 0"></a-plane>
       <a-box
       color="red"
-      position="-1 0.5 1"
+      position="-1 0 1"
       scale="0.5 0.5 0.5"></a-box>
       <a-box
       color="blue"
-      position="0 0.5 1"
+      position="0 0 1"
       scale="0.5 0.5 0.5"></a-box>
       <a-box
       color="green"
-      position="1 0.5 1"
+      position="1 0 1"
       scale="0.5 0.5 0.5"></a-box>
-
-      <a-sphere
-      color="red"
-      position="1 0.25 -1"
-      scale="0.25 0.25 0.25"></a-sphere>
-
-      <a-sphere
-      color="blue"
-      position="0 0.25 -1"
-      scale="0.25 0.25 0.25"></a-sphere>
-
-      <a-sphere
-      color="green"
-      position="-1 0.25 -1"
-      scale="0.25 0.25 0.25"></a-sphere>
     </a-marker>
     <a-entity camera></a-entity>
     <a-entity position="-1 0.8 -1" text="value: Score: 0; align: left;"></a-entity>
@@ -79,20 +49,13 @@
     <a-marker id="red" preset="kanji">
       <a-box
       id="redbox"
-      color="red"
-      ></a-box>
+      color="red"></a-box>
     </a-marker>
 
     <a-marker id="blue" type="pattern" url="https://cdn.glitch.global/130ad999-05c0-470d-b432-ebf743857416/pattern-letV.patt?v=1679542925500">
       <a-box
       id="bluebox"
       color="blue"></a-box>
-    </a-marker>
-
-     <a-marker id="chNeCub" type="pattern" url="https://cdn.glitch.global/89439951-2532-4b46-ae5a-ac14375adfaa/pattern-letterB.patt?v=1679458041012">
-      <a-box
-      id="chkbbox"
-      color="black"></a-box>
     </a-marker>
 
     <a-marker id="green" type="pattern" url="https://cdn.glitch.global/130ad999-05c0-470d-b432-ebf743857416/pattern-letter-a.patt?v=1679542924743">
@@ -103,7 +66,7 @@
   </a-scene>
 
   <div class="header">
-          <h1 id="time" class="counter">Score: <div id="min" class="min"></div> </h1>
+          <h1 id="time" class="counter">Итог - <div id="min" class="min"></div> </h1>
   </div>
         <style>
             .header {
@@ -134,40 +97,24 @@
 
   <script>
     const COLORS = ['red', 'green', 'blue'];
-    const SHAPES = [1, 2, 3];
-
+    //const COLORS = ['red'];
     var counter = 0;
     var colorIndex;
-    var shape;
 
     // кубик
     function createCube(color) {
       const cubeEl = document.querySelector('#cubeContainer');
-      cubeEl.setAttribute('position', `0 0.5 0`);
+      cubeEl.setAttribute('position', `0 0 0`);
       cubeEl.setAttribute('color', color);
-      cubeEl.setAttribute('opacity', `1`);
+      //cubeEl.setAttribute('height',0.5);
+      //cubeEl.setAttribute('width',0.5);
+      //cubeEl.setAttribute('animation', 'false');
+      //cubeEl.setAttribute('scale', '0.5 0.5 0.5');
+      //const cubeContainerEl = document.querySelector('#cubeContainer');
+      //cubeContainerEl.appendChild(cubeEl);
+
+      //b();
     }
-
-    function createSphere(color) {
-      const sphereEl = document.querySelector('#sphereContainer');
-      sphereEl.setAttribute('position', `0 0.25 0`);
-      sphereEl.setAttribute('color', color);
-      sphereEl.setAttribute('opacity', `1`);
-    }
-
-    function createNekubit() {
-      const modulEl = document.querySelector('#galaftContainer');
-      modulEl.setAttribute('visible', `true`);
-
-      var ind = Math.floor(Math.random() * 3);
-      if(ind == 0)
-      modulEl.setAttribute('src','https://cdn.glitch.global/89439951-2532-4b46-ae5a-ac14375adfaa/cube1.glb?v=1679566677340');
-      if(ind == 1)
-      modulEl.setAttribute('src','https://cdn.glitch.global/89439951-2532-4b46-ae5a-ac14375adfaa/cube5.glb?v=1679567495117');
-      if(ind == 2)
-      modulEl.setAttribute('src','https://cdn.glitch.global/89439951-2532-4b46-ae5a-ac14375adfaa/cube3.glb?v=1679567128888');
-    }
-
 
     // генерируем цвет
     function getRandomColor() {
@@ -176,45 +123,37 @@
       return COLORS[index];
     }
 
-    function getRandomShape() {
-      var index = Math.floor(Math.random() * SHAPES.length);
-      return index;
-    }
-
-
     // генерация кубов с рандомным цветом
     function generateCubes() {
-      const cubeEl = document.querySelector('#cubeContainer');
-      const sphereEl = document.querySelector('#sphereContainer');
-      const modelEl = document.querySelector('#galaftContainer');
-      shape = getRandomShape();
-      if (shape == 0) {
         const color = getRandomColor();
-        sphereEl.setAttribute('opacity', `0`);
-        modelEl.setAttribute('visible', `false`);
         createCube(color);
-      }
-      else if(shape==1){
-        const color = getRandomColor();
-        cubeEl.setAttribute('opacity', `0`);
-        modelEl.setAttribute('visible', `false`);
-        createSphere(color);
-      }
-      else if(shape == 2){
-        const color = getRandomColor();
-        sphereEl.setAttribute('opacity', `0`);
-        cubeEl.setAttribute('opacity', `0`);
-        createNekubit();
-      }
-
     }
 
     // ищем маркер
-   /* const markerEl = document.querySelector('#hiro');
+    const markerEl = document.querySelector('#hiro');
     markerEl.addEventListener('markerFound', () => {
       generateCubes();
+    });
+
+    // теряем маркер
+    /*markerEl.addEventListener('markerLost', () => {
+      const cubeContainerEl = document.querySelector('#cubeContainer');
+      cubeContainerEl.innerHTML = '';
     });*/
 
+   /* function moveToCube() {
+  // Get the first cube on the scene
+  const cubeEl = document.querySelector('#cubeContainer');
+
+
+  // Choose a random color cube from the panel
+  const index = Math.floor(Math.random() * colorCubes.length);
+  const targetCube = colorCubes[index];
+
+  // Move the first cube to the position of the target cube
+  const position = targetCube.getAttribute('position');
+  cubeEl.setAttribute('position', position);
+}*/
   //красная кнопка
     const redButton = document.querySelector('#redbox');
     const redMarker = document.querySelector('#red');
@@ -223,13 +162,22 @@
     var redPosy;
     var redPosz;
 
+   /* redMarker.addEventListener('markerFound', () => {
+      var redPos = redMarker.getAttribute('position');
+      console.log(redPos);
+      redPosX = redPos.x.toFixed(1);
+
+      redPosY = redPos.y.toFixed(1);
+      redPosZ = redPos.z.toFixed(1);
+
+    });*/
     let marker = document.querySelector("#hiro");
     let sound = document.querySelector("#audio1");
     let sound1 = document.querySelector("#audio2");
 
     marker.addEventListener('markerFound', function(){
       var markerId = marker.id;
-      generateCubes();
+      sound.play();
     });
 
     marker.addEventListener('markerLost', function(){
@@ -237,32 +185,18 @@
       sound.pause();
     });
 
-    let marker7 = document.querySelector("#chNeCub");
-     marker7.addEventListener('markerLost', () => {
-        generateCubes();
-    });
-
     redMarker.addEventListener('markerLost', () => {
 
-      if (colorIndex == 0 && shape == 0) {
+      if (colorIndex == 0) {
         counter = counter + 1;
         document.getElementById("min").innerHTML = counter;
+        //generateCubes();
         var cube = document.getElementById("cubeContainer");
-        cube.setAttribute('animation', `property: position; to: -1 0 1; dur: 1000; easing: linear;`);
+        cube.setAttribute('animation', `property: position; to: -1 0 1; dur: 2000; easing: linear;`);
         setTimeout(function() {
         cube.removeAttribute('animation');
         generateCubes();
-        sound1.play();}, 1000);
-      }
-      if (colorIndex == 0 && shape == 1) {
-        counter = counter + 1;
-        document.getElementById("min").innerHTML = counter;
-        var sphere = document.getElementById("sphereContainer");
-        sphere.setAttribute('animation', `property: position; to: 1 0.25 -1; dur: 1000; easing: linear;`);
-        setTimeout(function() {
-        sphere.removeAttribute('animation');
-        generateCubes();
-        sound1.play();}, 1000);
+        sound1.play();}, 2000);
       }
       else {
         counter = 0;
@@ -276,25 +210,15 @@
 
     blueButton.addEventListener('markerLost', () => {
 
-      if (colorIndex == 2 && shape == 0) {
+      if (colorIndex == 2) {
         counter = counter + 1;
         document.getElementById("min").innerHTML = counter;
         var cube = document.getElementById("cubeContainer");
-        cube.setAttribute('animation', `property: position; to: 0 0 1; dur: 1000; easing: linear;`);
+        cube.setAttribute('animation', `property: position; to: 0 0 1; dur: 2000; easing: linear;`);
         setTimeout(function() {
         cube.removeAttribute('animation');
         generateCubes();
-        sound1.play();}, 1000);
-      }
-      else if (colorIndex == 2 && shape == 1) {
-        counter = counter + 1;
-        document.getElementById("min").innerHTML = counter;
-        var sphere = document.getElementById("sphereContainer");
-        sphere.setAttribute('animation', `property: position; to: 0 0.25 -1; dur: 1000; easing: linear;`);
-        setTimeout(function() {
-        sphere.removeAttribute('animation');
-        generateCubes();
-        sound1.play();}, 1000);
+        sound1.play();}, 2000);
       }
       else {
         counter = 0;
@@ -308,25 +232,15 @@
 
     greenButton.addEventListener('markerLost', () => {
 
-      if (colorIndex == 1 && shape == 0) {
+      if (colorIndex == 1) {
         counter = counter + 1;
         document.getElementById("min").innerHTML = counter;
         var cube = document.getElementById("cubeContainer");
-        cube.setAttribute('animation', `property: position; to: 1 0 1; dur: 1000; easing: linear;`);
+        cube.setAttribute('animation', `property: position; to: 1 0 1; dur: 2000; easing: linear;`);
         setTimeout(function() {
         cube.removeAttribute('animation');
         generateCubes();
-        sound1.play();}, 1000);
-      }
-      else if (colorIndex == 1 && shape == 1) {
-        counter = counter + 1;
-        document.getElementById("min").innerHTML = counter;
-        var sphere = document.getElementById("sphereContainer");
-        sphere.setAttribute('animation', `property: position; to: -1 0.25 -1; dur: 1000; easing: linear;`);
-        setTimeout(function() {
-        sphere.removeAttribute('animation');
-        generateCubes();
-        sound1.play();}, 1000);
+        sound1.play();}, 2000);
       }
       else {
         counter = 0;
@@ -335,6 +249,7 @@
       }
     });
 
+    //document.getElementById("min").innerHTML = counter;
 
 
 

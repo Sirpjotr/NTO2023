@@ -45,4 +45,69 @@
         top: 50%;
         transform: translateX(-50%) translateY(-50%);
     }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+   .footer-right {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    .footer-nav {
+        flex-direction: column;
+        align-items: center;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .footer-list {
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+
+    .footer-item {
+        margin: 0;
+    }
+
+    .footer-item:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+
+    .footer-left {
+        margin-bottom: 25px;
+    }
+
+    .games-preview-image {
+        max-width: 100px;
+        object-fit: cover;
+    }
+
+    .games-preview-text {
+        padding: 20px;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 150%;
+        color: #787878;
+    }
+
+    .games-preview-title {
+        margin: 0;
+        margin-bottom: 10px;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 130%;
+        color: #1C1C1C;
+    }
+
+    .games-preview-desc {
+        margin: 0;
+        margin-bottom: 10px;
+    }
 }

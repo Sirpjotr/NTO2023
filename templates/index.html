@@ -1,28 +1,272 @@
-{% extends 'main-base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}
-Главная
-{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Горький код</title>
 
-{% block body %}
+    <link rel="stylesheet" href="static/css/normalize.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/media.css">
+
+    <link rel="shortcut icon" href="../static/img/gorcode-logo.svg" type="image/svg">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container flex header-container">
+            <a href="#" class="header-logo">
+                <img src="../static/img/gorcode-logo.jpg" alt="Logo" class="header-logo">
+            </a>
+            <nav class="header-nav">
+                <ul class="header-list list-reset flex">
+                    <li class="header-list-item">
+                        <a href="/" class="header-link">
+                            Главная
+                        </a>
+                    </li>
+                    <li class="header-list-item">
+                        <a href="#mini" class="header-link">
+                            Мини-игры
+                        </a>
+                    </li>
+                    <li class="header-list-item">
+                        <a href="#simple-game" class="header-link">
+                            Простая игра
+                        </a>
+                    </li>
+                    <li class="header-list-item">
+                        <a href="#dif-game" class="header-link">
+                            Сложная игра
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <button class="btn-reset burger">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main">
+        
+        <div class="main-container">
+            <div id="mini" class="mini sector">
+                <h2 class="sector-title">
+                    Мини-игры
+                </h2>
+                <ul class="games-list list-reset flex">
+                    <li class="games-item">
+                        <article class="games-preview flex">
+                            <img src="./static/img/loc-img.jpg" alt="Первая мини-игра" class="games-preview-image">
+                            <div class="games-preview-text">
+                                <a href="/position" class="games-link">
+                                    <h3 class="games-preview-title">
+                                        Позиционирование элементов
+                                    </h3>
+                                </a>
+                                <p class="games-preview-desc">
+                                    Данная страница демонстрирует наши умения в позиционировании элементов на сцене. Чтобы код заработал 
+                                    наведите камеру вашего смартфона на маркер Hiro, который вы можете скачать по ссылке ниже.
+                                    Также вы можете посмотреть видео работующей страницы по соседней ссылке.
+                                </p>
+                                <div class="games-preview-lins">
+                                    <ul class="list-reset games-link-icons flex">
+                                        <li class="preview-icon-item">
+                                            <a href="../img/Hiro.png" download class="games-icon download"></a>
+                                        </li>
+                                        <li class="preview-icon-item">
+                                            <a href="#" class="games-icon watch"></a>
+                                        </li>
+                                    </ul>   
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                    <li class="games-item">
+                        <article class="games-preview flex">
+                            <img src="./static/img/rotation-img.jpg" alt="Первая мини-игра" class="games-preview-image">
+                            <div class="games-preview-text">
+                                <a href="/rotation" class="games-link">
+                                    <h3 class="games-preview-title">
+                                        Простмотр 3D моделей
+                                    </h3>
+                                </a>
+                                <p class="games-preview-desc">
+                                    Данная страница дает возможность осмотреть обЪект со всех сторон. Чтобы код заработал 
+                                    наведите камеру вашего смартфона на маркер Hiro, который вы можете скачать по ссылке ниже.
+                                    Также вы можете посмотреть видео работующей страницы по соседней ссылке.
+                                </p>
+                                <div class="games-preview-lins">
+                                    <ul class="list-reset games-link-icons flex">
+                                        <li class="preview-icon-item">
+                                            <a href="../img/Hiro.png" download class="games-icon download"></a>
+                                        </li>
+                                        <li class="preview-icon-item">
+                                            <a href="#" class="games-icon watch"></a>
+                                        </li>
+                                    </ul>   
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                    <li class="games-item">
+                        <article class="games-preview flex">
+                            <img src="./static/img/shadow-img.jpg" alt="Первая мини-игра" class="games-preview-image">
+                            <div class="games-preview-text">
+                                <a href="/shadow" class="games-link">
+                                    <h3 class="games-preview-title">
+                                        Секрет
+                                    </h3>
+                                </a>
+                                <p class="games-preview-desc">
+                                    Мы смогли определить, какой секрет в себе таит куб при помощи освещения сцены. Чтобы код заработал 
+                                    наведите камеру вашего смартфона на маркер Hiro, который вы можете скачать по ссылке ниже.
+                                    Также вы можете посмотреть видео работующей страницы по соседней ссылке.
+                                </p>
+                                <div class="games-preview-lins">
+                                    <ul class="list-reset games-link-icons flex">
+                                        <li class="preview-icon-item">
+                                            <a href="../img/Hiro.png" download class="games-icon download"></a>
+                                        </li>
+                                        <li class="preview-icon-item">
+                                            <a href="#" class="games-icon watch"></a>
+                                        </li>
+                                    </ul>   
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                    <li class="games-item">
+                        <article class="games-preview flex">
+                            <img src="./static/img/shadow-animation-img.jpg" alt="Первая мини-игра" class="games-preview-image">
+                            <div class="games-preview-text">
+                                <a href="/shadow-animation" class="games-link">
+                                    <h3 class="games-preview-title">
+                                        Анимация с тенью
+                                    </h3>
+                                </a>
+                                <p class="games-preview-desc">
+                                    На данной странице вы сможете наблюдать анимированный обЪект с тенью и даже поуправлять им. Чтобы код заработал 
+                                    наведите камеру вашего смартфона на маркер Hiro, который вы можете скачать по ссылке ниже.
+                                    Также вы можете посмотреть видео работующей страницы по соседней ссылке.
+                                </p>
+                                <div class="games-preview-lins">
+                                    <ul class="list-reset games-link-icons flex">
+                                        <li class="preview-icon-item">
+                                            <a href="../img/Hiro.png" download class="games-icon download"></a>
+                                        </li>
+                                        <li class="preview-icon-item">
+                                            <a href="#" class="games-icon watch"></a>
+                                        </li>
+                                    </ul>   
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                </ul>
+                <p class="prolog">продолжение следует...</p>
+            </div> 
+            <div id="simple-game" class="game sector">
+                <h2 class="sector-title">
+                    Простая игра
+                </h2>
+                <ul class="games-list list-reset flex">
+                    <li class="games-item">
+                        <article class="games-preview flex">
+                            <img src="./static/img/simple-game.jpg" alt="Простая игра" class="games-preview-image">
+                            <div class="games-preview-text">
+                                <a href="/simple-game" class="games-link">
+                                    <h3 class="games-preview-title">
+                                        Базовый уровень
+                                    </h3>
+                                </a>
+                                <p class="games-preview-desc">
+                                  Данная игра реализована по критериям базового уровня. Для того, 
+                                  чтобы сыграть, наведите камеру на приложенный набор маркеров. Появится игровое поле. 
+                                  Требуется скрывать маркер, на котором расположен куб соответсвующего цвета. Скачайте набор маркеров по ссылке.
+                                </p>
+                                <div class="games-preview-lins">
+                                    <ul class="list-reset games-link-icons flex">
+                                        <li class="preview-icon-item">
+                                            <a href="../img/Hiro.png" download class="games-icon download"></a>
+                                        </li>
+                                        <li class="preview-icon-item">
+                                            <a href="#" class="games-icon watch"></a>
+                                        </li>
+                                    </ul>   
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                </ul>
+            </div> 
+            <div id="dif-game" class="dif-game sector">
+                <h2 class="sector-title">
+                    Сложная игра
+                </h2>
+                <ul class="games-list list-reset flex">
+                    <li class="games-item">
+                        <article class="games-preview flex">
+                            <img src="./static/img/dif-game.jpg" alt="Сложная игра" class="games-preview-image">
+                            <div class="games-preview-text">
+                                <a href="/dif-game" class="games-link">
+                                    <h3 class="games-preview-title">
+                                        Продвинутый уровень
+                                    </h3>
+                                </a>
+                                <p class="games-preview-desc">
+                                  Данная игра реализована по критериям выше базового уровня. Для того, 
+                                  чтобы сыграть, наведите камеру на приложенный набор маркеров. Появится игровое поле. 
+                                  Требуется скрывать маркер, на котором расположен куб соответсвующего цвета. 
+                                  Избегайте попадания некубитоклобусов в контейнеры. Скачайте набор маркеров по ссылке.
+                                </p>
+                                <div class="games-preview-lins">
+                                    <ul class="list-reset games-link-icons flex">
+                                        <li class="preview-icon-item">
+                                            <a href="../img/Hiro.png" download class="games-icon download"></a>
+                                        </li>
+                                        <li class="preview-icon-item">
+                                            <a href="#" class="games-icon watch"></a>
+                                        </li>
+                                    </ul>   
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                </ul>
+            </div> 
+        </div>
+        
+    </main>
+
     <footer class="footer">
         <div class="container flex footer-container">
             <div class="footer-left flex">
                 <a href="#" class="footer-logo">
-                    <img class="footer-logo-img" src="static/img/gorcode-logo.jpg" alt="Logo">
+                    <img class="footer-logo-img" src="./static/img/gorcode-logo.jpg" alt="Logo">
                 </a>
                 <small class="footer-copy">
                     Горький код НТО 2023 
                 </small>
             </div>
             <div class="footer-right flex">
-                <nav class="footer-nav">
+                <nav class="footer-nav flex">
                     <ul class="list-reset footer-list flex">
                         <li class="footer-item">
-                            <a href="#" target="_blank" class="footer-link">Главная</a>
+                            <a href="/" target="_blank" class="footer-link">Главная</a>
                         </li>
                         <li class="footer-item">
-                            <a href="#" target="_blank" class="footer-link">Фотобудка</a>
+                            <a href="#mini" target="_blank" class="footer-link">Мини-игры</a>
+                        </li>
+                        <li class="footer-item">
+                            <a href="/simple-game" target="_blank" class="footer-link">Простая игра</a>
+                        </li>
+                        <li class="footer-item">
+                            <a href="/dif-game" target="_blank" class="footer-link">Сложная игра</a>
                         </li>
                     </ul>
                 </nav>
@@ -37,4 +281,6 @@
             </div>
         </div>
     </footer>
-{% endblock %}
+</body>
+
+</html>
